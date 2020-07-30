@@ -361,8 +361,8 @@ export interface StatusBarMessageRegistryMain {
         alignment: theia.StatusBarAlignment,
         color: string | undefined,
         tooltip: string | undefined,
-        command: string | undefined): PromiseLike<void>;
-    $update(id: string, message: string): void;
+        command: string | undefined,
+        args: any[] | undefined): PromiseLike<void>;
     $dispose(id: string): void;
 }
 
@@ -1366,6 +1366,8 @@ export interface DebugExt {
     $sessionDidChange(sessionId: string | undefined): void;
     $provideDebugConfigurations(debugType: string, workspaceFolder: string | undefined): Promise<theia.DebugConfiguration[]>;
     $resolveDebugConfigurations(debugConfiguration: theia.DebugConfiguration, workspaceFolder: string | undefined): Promise<theia.DebugConfiguration | undefined>;
+    $resolveDebugConfigurationWithSubstitutedVariables(debugConfiguration: theia.DebugConfiguration, workspaceFolder: string | undefined):
+        Promise<theia.DebugConfiguration | undefined>;
     $createDebugSession(debugConfiguration: theia.DebugConfiguration): Promise<string>;
     $terminateDebugSession(sessionId: string): Promise<void>;
     $getTerminalCreationOptions(debugType: string): Promise<TerminalOptionsExt | undefined>;
