@@ -153,6 +153,7 @@
     "vscode-editorconfig": "https://open-vsx.org/api/EditorConfig/EditorConfig/0.15.1/file/EditorConfig.EditorConfig-0.15.1.vsix",
     "vscode-eslint": "https://open-vsx.org/api/dbaeumer/vscode-eslint/2.1.3/file/dbaeumer.vscode-eslint-2.1.3.vsix",
     "vscode-go": "https://github.com/golang/vscode-go/releases/download/v0.15.1/go-0.15.1.vsix",
-    "vscode-references-view": "https://open-vsx.org/api/ms-vscode/references-view/0.0.47/file/ms-vscode.references-view-0.0.47.vsix"
+    "vscode-references-view": "https://open-vsx.org/api/ms-vscode/references-view/0.0.47/file/ms-vscode.references-view-0.0.47.vsix",
+    "vscode-typescript-tslint-plugin": "https://open-vsx.org/api/ms-vscode/vscode-typescript-tslint-plugin/1.2.2/file/ms-vscode.vscode-typescript-tslint-plugin-1.2.2.vsix"
   }
 }
