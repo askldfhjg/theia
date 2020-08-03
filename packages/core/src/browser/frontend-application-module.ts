@@ -92,6 +92,7 @@ import { TreeLabelProvider } from './tree/tree-label-provider';
 import { ProgressBar } from './progress-bar';
 import { ProgressBarFactory, ProgressBarOptions } from './progress-bar-factory';
 import { CommandOpenHandler } from './command-open-handler';
+import { LanguageService } from './language-service';
 
 export { bindResourceProvider, bindMessageService, bindPreferenceService };
 
@@ -209,6 +210,8 @@ export const frontendApplicationModule = new ContainerModule((bind, unbind, isBo
         return messages;
     });
 
+    bind(LanguageService).toSelf().inSingletonScope();
+
     bind(ResourceContextKey).toSelf().inSingletonScope();
     bind(CommonFrontendContribution).toSelf().inSingletonScope();
     [FrontendApplicationContribution, CommandContribution, KeybindingContribution, MenuContribution, ColorContribution].forEach(serviceIdentifier =>
@@ -248,7 +251,8 @@ export const frontendApplicationModule = new ContainerModule((bind, unbind, isBo
     bindContributionProvider(bind, LabelProviderContribution);
     bind(LabelProvider).toSelf().inSingletonScope();
     bind(FrontendApplicationContribution).toService(LabelProvider);
-    bind(LabelProviderContribution).to(DefaultUriLabelProviderContribution).inSingletonScope();
+    bind(DefaultUriLabelProviderContribution).toSelf().inSingletonScope();
+    bind(LabelProviderContribution).toService(DefaultUriLabelProviderContribution);
     bind(LabelProviderContribution).to(DiffUriLabelProviderContribution).inSingletonScope();
 
     bind(TreeLabelProvider).toSelf().inSingletonScope();
