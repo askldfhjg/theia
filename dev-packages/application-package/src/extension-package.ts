@@ -115,32 +115,6 @@ export class ExtensionPackage {
         return '';
     }
 
-    async getLatestVersion(): Promise<string | undefined> {
-        const raw = await this.view();
-        return raw.latestVersion;
-    }
-
-    protected versionRange?: string;
-    async getVersionRange(): Promise<string | undefined> {
-        if (this.versionRange === undefined) {
-            this.versionRange = await this.resolveVersionRange();
-        }
-        return this.versionRange;
-    }
-    protected async resolveVersionRange(): Promise<string | undefined> {
-        const version = this.raw.version;
-        const validVersion = semver.valid(version);
-        if (validVersion) {
-            return validVersion;
-        }
-        const validRange = semver.validRange(version);
-        if (validRange) {
-            return validRange;
-        }
-        const raw = await this.view();
-        return raw.tags ? raw.tags[version] : undefined;
-    }
-
     getAuthor(): string {
         if (this.raw.publisher) {
             return this.raw.publisher.username;
@@ -157,20 +131,6 @@ export class ExtensionPackage {
         return '';
     }
 
-    async isOutdated(): Promise<boolean> {
-        const latestVersion = await this.getLatestVersion();
-        if (!latestVersion) {
-            return false;
-        }
-        const versionRange = await this.getVersionRange();
-        if (versionRange && semver.gtr(latestVersion, versionRange)) {
-            return true;
-        }
-        if (this.raw.installed) {
-            return semver.gt(latestVersion, this.raw.installed.version);
-        }
-        return false;
-    }
 }
 
 export interface RawExtensionPackage extends PublishedNodePackage {
