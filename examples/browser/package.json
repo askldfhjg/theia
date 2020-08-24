@@ -6,6 +6,8 @@
   "theia": {
     "frontend": {
       "config": {
+        "defaultTheme": "light",
+        "defaultIconTheme": "vs-seti",
         "applicationName": "Theia Browser Example",
         "preferences": {
           "files.enableTrash": false
