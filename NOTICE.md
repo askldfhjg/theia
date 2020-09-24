@@ -333,3 +333,5 @@ can be found here
 https://electronjs.org/docs/development/upgrading-chromium#verify-ffmpeg-support
 
 
+    //"vscode-builtin-git": "https://open-vsx.org/api/vscode/git/1.48.0/file/vscode.git-1.48.0.vsix",
+    //"vscode-builtin-git-ui": "https://open-vsx.org/api/vscode/git-ui/1.48.0/file/vscode.git-ui-1.48.0.vsix",
